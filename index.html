@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Sada Print Shop Outreach</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a work queue. Today's sends up top as tear-tag cards, then leads, emails, add. */
+:root{
+  --bg:#F4F5F8; --surface:#FFFFFF; --fg:#16181F; --muted:#5E6474; --line:#D9DCE5;
+  --accent:#2F43A3; --accent-ink:#FFFFFF; --accent-soft:#E6E9F7;
+  --warn:#9A5B00; --warn-soft:#FBEFD9; --bad:#A3302B;
+  --display:"Familjen Grotesk","Helvetica Neue",Arial,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#0E1311; --surface:#18201C; --fg:#F2F5F3; --muted:#A3AFA8; --line:#2C3832;
+  --accent:#3FD99B; --accent-ink:#06120C; --accent-soft:#173A2B;
+  --warn:#E8B45C; --warn-soft:#33270F; --bad:#EE8A84;
+  color-scheme:dark}}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.5;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+[hidden]{display:none!important}
+.wrap{max-width:980px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 64px;display:flex;flex-direction:column;gap:20px}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(26px,5vw,36px);line-height:1.1;margin:0;letter-spacing:-.01em;text-wrap:balance}
+h2{font-family:var(--display);font-weight:700;font-size:20px;margin:0;text-wrap:balance}
+.sub{color:var(--muted);margin:6px 0 0;max-width:62ch}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.topbar{display:flex;gap:12px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap}
+.who-am-i{font-size:13px;color:var(--muted);display:flex;gap:8px;align-items:center}
+.banner{background:var(--warn-soft);color:var(--warn);padding:10px 14px;border-radius:8px;font-size:14px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.stat{background:var(--surface);padding:12px 14px;display:flex;flex-direction:column;gap:2px}
+.stat b{font-family:var(--display);font-size:26px;font-variant-numeric:tabular-nums}
+.stat span{font-size:12px;color:var(--muted);font-family:var(--mono);letter-spacing:.04em;text-transform:uppercase}
+.stat.hot b{color:var(--accent)}
+nav.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);overflow-x:auto}
+nav.tabs button{background:none;border:0;border-bottom:2px solid transparent;border-radius:0;padding:10px 12px;font:600 14px var(--body);color:var(--muted);cursor:pointer;white-space:nowrap}
+nav.tabs button[aria-selected="true"]{color:var(--fg);border-bottom-color:var(--accent)}
+nav.tabs .count{font-family:var(--mono);font-weight:500;font-size:12px;background:var(--accent-soft);color:var(--accent);padding:1px 6px;border-radius:99px;margin-left:6px}
+section{display:flex;flex-direction:column;gap:14px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.spacer{flex:1}
+button,.btn{font:600 14px var(--body);border-radius:7px;padding:8px 14px;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;line-height:1.2}
+.btn.primary,button.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+button.ghost{background:none;border-color:transparent;color:var(--muted);padding:6px 8px}
+button.danger{color:var(--bad)}
+button:focus-visible,.btn:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+button:disabled{opacity:.5;cursor:not-allowed}
+.tag{background:var(--surface);border:1px solid var(--line);border-radius:10px;display:grid;grid-template-columns:118px 1fr;overflow:hidden}
+.tag .stub{border-right:2px dashed var(--line);padding:14px 12px;display:flex;flex-direction:column;gap:4px;background:var(--accent-soft)}
+.tag .stub .step{font-family:var(--display);font-weight:700;font-size:18px;color:var(--accent)}
+.tag .stub small{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.tag .main{padding:14px 16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.tag .who{font-weight:600}
+.tag .addr{font-family:var(--mono);font-size:13px;color:var(--muted);word-break:break-all;user-select:all}
+.tag .subj{font-size:14px}
+.tag details{font-size:14px}
+.tag details summary{cursor:pointer;color:var(--muted)}
+.tag pre{white-space:pre-wrap;font-family:var(--body);font-size:14px;background:var(--bg);padding:10px 12px;border-radius:6px;margin:8px 0 0;max-width:65ch}
+@media (max-width:560px){.tag{grid-template-columns:1fr}.tag .stub{border-right:0;border-bottom:2px dashed var(--line);flex-direction:row;align-items:baseline;gap:10px}}
+.empty{border:1px dashed var(--line);border-radius:10px;padding:28px 20px;text-align:center;color:var(--muted)}
+.empty strong{display:block;color:var(--fg);font-family:var(--display);font-size:18px;margin-bottom:4px}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:640px}
+th{text-align:left;font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:10px 12px;border-bottom:1px solid var(--line)}
+td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+tr:last-child td{border-bottom:0}
+td .mono,.mono{font-family:var(--mono);font-size:13px;color:var(--muted)}
+.pill{display:inline-block;font-family:var(--mono);font-size:11px;padding:2px 8px;border-radius:99px;background:var(--accent-soft);color:var(--accent);white-space:nowrap}
+select,input,textarea{font:400 14px var(--body);color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:7px;padding:8px 10px;width:100%}
+td select{width:auto;padding:5px 8px}
+textarea{min-height:120px;resize:vertical;line-height:1.5}
+label{display:flex;flex-direction:column;gap:4px;font-size:13px;font-weight:600;min-width:0}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:12px}
+.hint{font-size:13px;color:var(--muted);margin:0;max-width:70ch}
+code{font-family:var(--mono);font-size:12.5px;background:var(--accent-soft);color:var(--accent);padding:1px 5px;border-radius:4px}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--fg);color:var(--bg);padding:10px 16px;border-radius:8px;font-size:14px;z-index:20;max-width:calc(100% - 32px)}
+.emrow{display:flex;gap:6px}.emrow input{min-width:170px;padding:5px 8px}.emrow button{padding:5px 10px}
+.site{display:block;margin-top:4px;color:var(--accent);font-size:12.5px;word-break:break-all}
+.confirm{display:inline-flex;gap:6px;align-items:center;font-size:13px}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.filters select,.filters input{width:auto}
+.login{max-width:420px;margin:12vh auto 0}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- Sign-in -->
+<div class="wrap" id="login-view" hidden>
+  <div class="card login">
+    <div class="eyebrow">Sada · tear-away tag line</div>
+    <h1>Print Shop Outreach</h1>
+    <p class="hint">Sign in with your approved email. We'll send you a one-time link.</p>
+    <label>Email<input id="login-email" type="email" autocomplete="email" placeholder="sales@bureen.com"></label>
+    <div class="row"><button class="primary" id="login-btn">Email me a sign-in link</button></div>
+    <p class="hint" id="login-msg"></p>
+  </div>
+</div>
+
+<!-- Setup missing -->
+<div class="wrap" id="config-view" hidden>
+  <div class="card login">
+    <h2>Almost ready</h2>
+    <p class="hint">Add your Supabase Project URL and anon key to <code>config.js</code>, then reload this page.</p>
+  </div>
+</div>
+
+<!-- App -->
+<div class="wrap" id="app-view" hidden>
+  <div class="topbar">
+    <header>
+      <div class="eyebrow">Sada · tear-away tag line</div>
+      <h1>Print Shop Outreach</h1>
+      <p class="sub">Each card below is one email ready to go. Open it in Outlook, hit send, then mark it sent. Follow-ups come back here on their own when they're due.</p>
+    </header>
+    <div class="who-am-i"><span id="me"></span><button class="ghost" id="signout">Sign out</button></div>
+  </div>
+
+  <div id="banner" class="banner" hidden></div>
+  <div class="stats" id="stats"></div>
+
+  <nav class="tabs" role="tablist">
+    <button role="tab" data-tab="today" aria-selected="true">Send today<span class="count" id="c-today">0</span></button>
+    <button role="tab" data-tab="leads" aria-selected="false">All leads<span class="count" id="c-leads">0</span></button>
+    <button role="tab" data-tab="add" aria-selected="false">Add leads</button>
+    <button role="tab" data-tab="emails" aria-selected="false">Email sequence</button>
+  </nav>
+
+  <section id="tab-today"></section>
+
+  <section id="tab-leads" hidden>
+    <div class="row">
+      <div class="filters">
+        <select id="f-status" aria-label="Filter by status"><option value="">All statuses</option></select>
+        <input id="f-q" type="search" placeholder="Search shop, name, city" aria-label="Search leads">
+      </div>
+      <span class="spacer"></span>
+      <button id="copy-csv">Copy as CSV</button>
+    </div>
+    <div id="leads-body"></div>
+  </section>
+
+  <section id="tab-add" hidden>
+    <div class="card">
+      <h2>Paste a list</h2>
+      <p class="hint">One shop per line: <code>Shop name, First name, Email, City</code>. Commas or tabs both work, so you can paste straight from a spreadsheet. First name and city are optional. Duplicate emails are skipped.</p>
+      <label>Leads<textarea id="bulk" placeholder="Big Easy Screen Print, Marcus, marcus@bigeasyprint.com, New Orleans&#10;Gulf Coast Embroidery, , info@gulfcoastemb.com, Biloxi"></textarea></label>
+      <div class="row"><button class="primary" id="bulk-add">Add leads</button><span id="bulk-msg" class="hint"></span></div>
+    </div>
+    <div class="card">
+      <h2>Add one shop</h2>
+      <div class="grid2">
+        <label>Shop name<input id="a-shop" autocomplete="off"></label>
+        <label>First name<input id="a-first" autocomplete="off"></label>
+        <label>Email<input id="a-email" type="email" autocomplete="off"></label>
+        <label>City<input id="a-city" autocomplete="off"></label>
+      </div>
+      <label>Notes<input id="a-notes" placeholder="e.g. does DTF and screen print, saw them on Instagram" autocomplete="off"></label>
+      <div class="row"><button class="primary" id="one-add">Add shop</button><span id="one-msg" class="hint"></span></div>
+    </div>
+  </section>
+
+  <section id="tab-emails" hidden>
+    <p class="hint">These fill in automatically for each shop. Merge fields: <code>{first_name}</code> <code>{shop}</code> <code>{city}</code>. Keep the address and opt-out line at the bottom: US law (CAN-SPAM) requires both on commercial email.</p>
+    <div class="card">
+      <div class="grid2">
+        <label>Days before follow-up 1<input id="gap1" type="number" min="1" max="30"></label>
+        <label>Days before follow-up 2<input id="gap2" type="number" min="1" max="30"></label>
+      </div>
+    </div>
+    <div id="tpl-list" style="display:flex;flex-direction:column;gap:14px"></div>
+    <div class="row"><button class="primary" id="tpl-save">Save emails</button><button id="tpl-reset">Restore defaults</button><span id="tpl-msg" class="hint"></span></div>
+  </section>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script src="config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>
+const CFG=window.SADA_CONFIG||{};
+const STEP_NAMES=['First email','Follow-up 1','Follow-up 2'];
+const STATUS={active:'In sequence',replied:'Replied',sample:'Wants samples',customer:'Customer',no:'Not interested',bounced:'Bounced'};
+const FOOT='\n\n--\nYasin\nSada by Bureen LLC\n'+(CFG.senderEmail||'sales@bureen.com')+'\n12 Olympic Street, Kenner, LA 70065\nNot a fit? Reply "no thanks" and I won\'t email again.';
+const DEFAULT_TPL={gap1:3,gap2:4,emails:[
+ {subject:'Tear-away tag blanks for {shop}?',
+  body:'Hi {first_name},\n\nI\'m Yasin with Sada, a T-shirt blank brand based in Kenner, Louisiana. We\'re getting ready to launch blanks made for print shops: each tee has a tear-away neck tag, so you can pull it off clean and finish the shirt under your customer\'s brand.\n\nBefore we lock in our first run, I\'m checking with a few shops in the area. Two quick questions:\n\n1. Do you relabel or private-label shirts for any of your customers?\n2. Which blanks do you use most right now?\n\nIf this sounds useful, I\'ll put {shop} on the list for first samples when our stock lands.\n\nThanks,'+FOOT},
+ {subject:'Re: Tear-away tag blanks for {shop}?',
+  body:'Hi {first_name},\n\nJust bumping this up. Even a one-line answer helps us decide sizes and colors for the first run.\n\nIf tear-away tags would save {shop} time, reply "samples" and you\'ll be first in line when they\'re ready.\n\nThanks,'+FOOT},
+ {subject:'Last note from me',
+  body:'Hi {first_name},\n\nI don\'t want to fill up your inbox, so this is my last email. If {shop} ever wants tear-away tag blanks, reply anytime and I\'ll send samples once our first run is in.\n\nThanks for your time,'+FOOT}
+]};
+
+let sb=null, leads=[], tpl=clone(DEFAULT_TPL), tab='today';
+const $=id=>document.getElementById(id);
+function clone(o){return JSON.parse(JSON.stringify(o))}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function todayISO(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function daysSince(iso){if(!iso)return 999;const [y,m,d]=iso.split('-').map(Number);const t=new Date(y,m-1,d);const n=new Date();const now=new Date(n.getFullYear(),n.getMonth(),n.getDate());return Math.round((now-t)/864e5)}
+function fill(t,l){return t.replace(/\{first_name\}/g,(l.first||'').trim()||'there').replace(/\{shop\}/g,(l.shop||'').trim()||'your shop').replace(/\{city\}/g,(l.city||'').trim()||'your area')}
+function nextStep(l){
+  if((l.status||'active')!=='active'||!l.email)return null;
+  const s=l.stage||0; if(s>=3)return null;
+  if(s===0)return{idx:0,dueIn:0};
+  const gap=s===1?+tpl.gap1:+tpl.gap2;
+  return{idx:s,dueIn:gap-daysSince(l.lastSent)};
+}
+function composeURL(l,i){
+  const e=tpl.emails[i],to=encodeURIComponent(l.email),su=encodeURIComponent(fill(e.subject,l)),bo=encodeURIComponent(fill(e.body,l));
+  const base=CFG.mailApp==='outlookcom'?'https://outlook.live.com/mail/0/deeplink/compose':'https://outlook.office.com/mail/deeplink/compose';
+  return base+'?to='+to+'&subject='+su+'&body='+bo;
+}
+function toast(msg){const t=$('toast');t.textContent=msg;t.hidden=false;clearTimeout(toast._t);toast._t=setTimeout(()=>t.hidden=true,2600)}
+async function copy(text,label){try{await navigator.clipboard.writeText(text);toast(label+' copied')}catch(e){toast('Copy was blocked. Select the text and copy it by hand.')}}
+function showBanner(m){$('banner').textContent=m;$('banner').hidden=!m}
+function view(name){['login','config','app'].forEach(v=>$(v+'-view').hidden=v!==name)}
+
+/* ---------- data mapping ---------- */
+const fromRow=r=>({id:r.id,shop:r.shop,first:r.first_name||'',email:r.email||'',city:r.city||'',website:r.website||'',notes:r.notes||'',status:r.status||'active',stage:r.stage||0,lastSent:r.last_sent||'',added:r.added||''});
+const toRow=p=>{const m={shop:'shop',first:'first_name',email:'email',city:'city',website:'website',notes:'notes',status:'status',stage:'stage',lastSent:'last_sent',added:'added'};const o={};for(const k in p)if(m[k])o[m[k]]=(p[k]===''&&(k==='lastSent'||k==='email'))?null:p[k];return o};
+
+/* ---------- auth + load ---------- */
+async function boot(){
+  if(!CFG.supabaseUrl||!CFG.supabaseAnonKey||!window.supabase){view('config');return}
+  sb=window.supabase.createClient(CFG.supabaseUrl,CFG.supabaseAnonKey);
+  const {data:{session}}=await sb.auth.getSession();
+  sb.auth.onAuthStateChange((evt,s)=>{if(evt==='SIGNED_IN'&&!leads.length)start(s);if(evt==='SIGNED_OUT')view('login')});
+  if(session)start(session);else view('login');
+}
+async function start(session){
+  view('app');$('me').textContent=session.user.email;
+  const ok=await sb.from('allowed_users').select('email').limit(1);
+  if(!ok.error&&!ok.data.length){showBanner('This email isn\'t on the approved list, so no leads will show. Add it to allowed_users in Supabase.');}
+  await Promise.all([loadLeads(),loadSettings()]);
+}
+async function loadLeads(){
+  const {data,error}=await sb.from('leads').select('*').order('shop');
+  if(error){showBanner('Couldn\'t load leads: '+error.message);return}
+  leads=data.map(fromRow);render();
+}
+async function loadSettings(){
+  const {data}=await sb.from('settings').select('data').eq('id','emails').maybeSingle();
+  if(data&&data.data){const d=data.data;tpl={gap1:d.gap1??3,gap2:d.gap2??4,emails:clone(d.emails||DEFAULT_TPL.emails)}}
+  renderTpl();render();
+}
+async function saveLead(id,patch){
+  const l=leads.find(x=>x.id===id);const before={...l};Object.assign(l,patch);render();
+  const {error}=await sb.from('leads').update(toRow(patch)).eq('id',id);
+  if(error){Object.assign(l,before);render();toast('Didn\'t save: '+error.message)}
+}
+async function addLeads(list){
+  const have=new Set(leads.map(l=>(l.email||'').toLowerCase()).filter(Boolean));const rows=[];let skipped=0;
+  for(const l of list){const em=l.email.toLowerCase();if(have.has(em)){skipped++;continue}have.add(em);
+    rows.push(toRow({shop:l.shop,first:l.first||'',email:l.email,city:l.city||'',notes:l.notes||'',status:'active',stage:0,added:todayISO()}))}
+  if(!rows.length)return{added:0,skipped};
+  const {data,error}=await sb.from('leads').insert(rows).select();
+  if(error){toast('Didn\'t save: '+error.message);return{added:0,skipped}}
+  leads=leads.concat(data.map(fromRow));render();return{added:data.length,skipped};
+}
+async function removeLead(id){
+  const {error}=await sb.from('leads').delete().eq('id',id);
+  if(error){toast('Didn\'t delete: '+error.message);return}
+  leads=leads.filter(l=>l.id!==id);render();
+}
+
+/* ---------- render ---------- */
+function render(){
+  const due=[],later=[];
+  for(const l of leads){const n=nextStep(l);if(!n)continue;(n.dueIn<=0?due:later).push({l,n})}
+  due.sort((a,b)=>b.n.idx-a.n.idx||(a.l.added||'').localeCompare(b.l.added||''));
+  const cnt=k=>leads.filter(l=>(l.status||'active')===k).length;
+  const contacted=leads.filter(l=>(l.stage||0)>0).length;
+  const noEm=leads.filter(l=>!l.email).length;
+  $('stats').innerHTML=[['hot',due.length,'Due today'],['',leads.length,'Leads'],['',noEm,'Need email'],['',contacted,'Contacted'],['',cnt('replied')+cnt('sample'),'Replied / samples'],['',cnt('customer'),'Customers']]
+    .map(([c,v,k])=>`<div class="stat ${c}"><b>${v}</b><span>${k}</span></div>`).join('');
+  $('c-today').textContent=due.length;$('c-leads').textContent=leads.length;
+  renderToday(due,later);renderLeads();
+}
+function renderToday(due,later){
+  const el=$('tab-today');
+  if(!leads.length){el.innerHTML=`<div class="empty"><strong>No print shops yet</strong>Add your first leads in the Add leads tab, and their first email will show up here.</div>`;return}
+  let h='';
+  if(!due.length){
+    const soon=later.sort((a,b)=>a.n.dueIn-b.n.dueIn)[0];
+    h=`<div class="empty"><strong>You're caught up</strong>${soon?`Next follow-up is due in ${soon.n.dueIn} day${soon.n.dueIn===1?'':'s'} (${esc(soon.l.shop)}).`:'Add more shops to keep the pipeline moving.'}</div>`;
+  }else{
+    h=`<p class="hint">Send from ${esc(CFG.senderEmail||'your sales inbox')}. Keep it to 20 to 40 a day so your domain stays out of spam folders.</p>`;
+    h+=due.map(({l,n})=>{const e=tpl.emails[n.idx];return `
+    <article class="tag" data-id="${esc(l.id)}">
+      <div class="stub"><small>Step ${n.idx+1} of 3</small><span class="step">${STEP_NAMES[n.idx]}</span>${n.idx>0?`<small>${daysSince(l.lastSent)} days since last</small>`:''}</div>
+      <div class="main">
+        <div class="row"><span class="who">${esc(l.shop)}${l.first?' · '+esc(l.first):''}</span>${l.city?`<span class="pill">${esc(l.city)}</span>`:''}</div>
+        <div class="addr">${esc(l.email)}</div>
+        ${l.notes?`<div class="mono">${esc(l.notes)}</div>`:''}
+        <div class="subj"><span class="eyebrow">Subject</span> ${esc(fill(e.subject,l))}</div>
+        <details><summary>Preview email</summary><pre>${esc(fill(e.body,l))}</pre></details>
+        <div class="row">
+          <a class="btn primary" href="${esc(composeURL(l,n.idx))}" target="_blank" rel="noopener">Open in Outlook</a>
+          <button data-act="sent" data-step="${n.idx}">Mark sent</button>
+          <button class="ghost" data-act="copy">Copy email</button>
+          <span class="spacer"></span>
+          <button class="ghost" data-act="replied">They replied</button>
+        </div>
+      </div>
+    </article>`}).join('');
+  }
+  el.innerHTML=h;
+}
+function stageText(l){const s=l.stage||0;if(s===0)return 'Not contacted';const n=nextStep(l);const last=['','Email 1','Follow-up 1','Follow-up 2'][s]+' sent '+l.lastSent;return n?last+(n.dueIn>0?` · next in ${n.dueIn}d`:' · next due'):last}
+function webHref(w){return /^https?:\/\//i.test(w)?w:'https://'+w}
+function renderLeads(){
+  const fs=$('f-status').value,q=$('f-q').value.trim().toLowerCase();
+  const list=leads.filter(l=>(!fs||(fs==='noemail'?!l.email:(l.status||'active')===fs))&&(!q||[l.shop,l.first,l.city,l.email].join(' ').toLowerCase().includes(q))).sort((a,b)=>(a.shop||'').localeCompare(b.shop||''));
+  if(!leads.length){$('leads-body').innerHTML=`<div class="empty"><strong>No leads yet</strong>Paste a list in Add leads to get started.</div>`;return}
+  $('leads-body').innerHTML=`<div class="tablewrap"><table><thead><tr><th>Shop</th><th>Email</th><th>Progress</th><th>Status</th><th></th></tr></thead><tbody>${list.map(l=>`
+   <tr data-id="${esc(l.id)}"><td><b>${esc(l.shop)}</b><br><span class="mono">${esc([l.first,l.city].filter(Boolean).join(' · '))}</span>${l.notes?`<br><span class="mono">${esc(l.notes)}</span>`:''}</td>
+   <td class="mono">${l.email?esc(l.email):`<div class="emrow"><input data-act="em" type="email" placeholder="Paste email" aria-label="Email for ${esc(l.shop)}"><button data-act="saveem">Save</button></div>`}${l.website?`<a class="site" href="${esc(webHref(l.website))}" target="_blank" rel="noopener">${esc(l.website)} ↗</a>`:''}</td><td class="mono">${esc(l.email?stageText(l):'Needs email')}</td>
+   <td><select data-act="status" aria-label="Status for ${esc(l.shop)}">${Object.entries(STATUS).map(([k,v])=>`<option value="${k}"${(l.status||'active')===k?' selected':''}>${v}</option>`).join('')}</select></td>
+   <td><button class="ghost danger" data-act="del">Delete</button></td></tr>`).join('')}</tbody></table></div>`;
+}
+function renderTpl(){
+  $('gap1').value=tpl.gap1;$('gap2').value=tpl.gap2;
+  $('tpl-list').innerHTML=tpl.emails.map((e,i)=>`<div class="card"><div class="eyebrow">Step ${i+1} · ${STEP_NAMES[i]}</div>
+   <label>Subject<input id="s${i}" value="${esc(e.subject)}"></label><label>Body<textarea id="b${i}" style="min-height:240px">${esc(e.body)}</textarea></label></div>`).join('');
+}
+
+/* ---------- events ---------- */
+const EMAIL_RE=/^[^\s@,]+@[^\s@,]+\.[^\s@,]+$/;
+$('login-btn').addEventListener('click',async()=>{
+  const em=$('login-email').value.trim();
+  if(!EMAIL_RE.test(em)){$('login-msg').textContent='Enter a valid email address.';return}
+  $('login-btn').disabled=true;$('login-msg').textContent='Sending…';
+  const {error}=await sb.auth.signInWithOtp({email:em,options:{emailRedirectTo:location.origin+location.pathname}});
+  $('login-btn').disabled=false;
+  $('login-msg').textContent=error?'Couldn\'t send the link: '+error.message:'Check '+em+' for a sign-in link. You can close this tab.';
+});
+$('signout').addEventListener('click',async()=>{await sb.auth.signOut();leads=[];view('login')});
+document.querySelectorAll('nav.tabs button').forEach(b=>b.addEventListener('click',()=>{
+  tab=b.dataset.tab;document.querySelectorAll('nav.tabs button').forEach(x=>x.setAttribute('aria-selected',x===b));
+  ['today','leads','add','emails'].forEach(t=>$('tab-'+t).hidden=t!==tab);
+}));
+$('tab-today').addEventListener('click',e=>{
+  const b=e.target.closest('[data-act]');if(!b)return;const id=b.closest('[data-id]').dataset.id;const l=leads.find(x=>x.id===id);if(!l)return;
+  if(b.dataset.act==='sent'){const s=+b.dataset.step;saveLead(id,{stage:s+1,lastSent:todayISO()});toast(STEP_NAMES[s]+' marked sent to '+l.shop)}
+  if(b.dataset.act==='replied'){saveLead(id,{status:'replied'});toast(l.shop+' moved to Replied')}
+  if(b.dataset.act==='copy'){const n=nextStep(l);const em=tpl.emails[n.idx];copy('To: '+l.email+'\nSubject: '+fill(em.subject,l)+'\n\n'+fill(em.body,l),'Email')}
+});
+$('leads-body').addEventListener('change',e=>{if(e.target.dataset.act==='status'){saveLead(e.target.closest('tr').dataset.id,{status:e.target.value})}});
+$('leads-body').addEventListener('click',e=>{
+  const b=e.target.closest('[data-act]');if(!b)return;const tr=b.closest('tr');
+  if(b.dataset.act==='del'){b.outerHTML=`<span class="confirm">Delete? <button class="danger" data-act="yes">Yes</button><button class="ghost" data-act="no">No</button></span>`}
+  if(b.dataset.act==='yes')removeLead(tr.dataset.id);
+  if(b.dataset.act==='no')renderLeads();
+  if(b.dataset.act==='saveem'){const v=tr.querySelector('[data-act="em"]').value.trim();
+    if(!EMAIL_RE.test(v)){toast('That doesn\'t look like an email address');return}
+    if(leads.some(l=>(l.email||'').toLowerCase()===v.toLowerCase())){toast('That email is already on another lead');return}
+    saveLead(tr.dataset.id,{email:v});toast('Saved. First email is now in Send today.')}
+});
+$('f-status').innerHTML+='<option value="noemail">Needs email</option>'+Object.entries(STATUS).map(([k,v])=>`<option value="${k}">${v}</option>`).join('');
+$('f-status').addEventListener('change',renderLeads);$('f-q').addEventListener('input',renderLeads);
+$('copy-csv').addEventListener('click',()=>{
+  const q=v=>'"'+String(v??'').replace(/"/g,'""')+'"';
+  const rows=[['shop','first_name','email','city','website','status','emails_sent','last_sent','notes']].concat(leads.map(l=>[l.shop,l.first,l.email,l.city,l.website,STATUS[l.status||'active'],l.stage||0,l.lastSent,l.notes]));
+  copy(rows.map(r=>r.map(q).join(',')).join('\n'),'CSV');
+});
+$('bulk-add').addEventListener('click',async()=>{
+  const lines=$('bulk').value.split(/\n/).map(s=>s.trim()).filter(Boolean);const ok=[],bad=[];
+  for(const ln of lines){const p=ln.split(/\t|,/).map(s=>s.trim());const em=p.find(x=>EMAIL_RE.test(x));
+    if(!em){bad.push(ln);continue}const rest=p.filter(x=>x!==em);ok.push({shop:p[0]&&p[0]!==em?p[0]:em.split('@')[1],first:rest[1]||'',email:em,city:rest[2]||''})}
+  if(!ok.length){$('bulk-msg').textContent=lines.length?'No email addresses found. Each line needs one.':'Paste at least one line first.';return}
+  $('bulk-add').disabled=true;const r=await addLeads(ok);$('bulk-add').disabled=false;
+  $('bulk-msg').textContent=`Added ${r.added}.`+(r.skipped?` Skipped ${r.skipped} duplicate${r.skipped>1?'s':''}.`:'')+(bad.length?` ${bad.length} line${bad.length>1?'s':''} had no email.`:'');
+  if(r.added)$('bulk').value=bad.join('\n');
+});
+$('one-add').addEventListener('click',async()=>{
+  const em=$('a-email').value.trim(),shop=$('a-shop').value.trim();
+  if(!EMAIL_RE.test(em)){$('one-msg').textContent='Enter a valid email address.';return}
+  if(!shop){$('one-msg').textContent='Enter the shop name.';return}
+  const r=await addLeads([{shop,first:$('a-first').value.trim(),email:em,city:$('a-city').value.trim(),notes:$('a-notes').value.trim()}]);
+  $('one-msg').textContent=r.added?shop+' added. Its first email is in Send today.':'That email is already in your list.';
+  if(r.added)['a-shop','a-first','a-email','a-city','a-notes'].forEach(i=>$(i).value='');
+});
+$('tpl-save').addEventListener('click',async()=>{
+  const next={gap1:Math.max(1,+$('gap1').value||3),gap2:Math.max(1,+$('gap2').value||4),emails:tpl.emails.map((_,i)=>({subject:$('s'+i).value,body:$('b'+i).value}))};
+  tpl=next;render();
+  const {error}=await sb.from('settings').upsert({id:'emails',data:next,updated_at:new Date().toISOString()});
+  $('tpl-msg').textContent=error?'Didn\'t save: '+error.message:'Saved.';
+});
+$('tpl-reset').addEventListener('click',()=>{tpl=clone(DEFAULT_TPL);renderTpl();$('tpl-msg').textContent='Defaults restored. Save to keep them.'});
+
+renderTpl();boot();
+</script>
+</body>
+</html>
