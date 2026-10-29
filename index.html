@@ -189,7 +189,7 @@ code{font-family:var(--mono);font-size:12.5px;background:var(--accent-soft);colo
 const CFG=window.SADA_CONFIG||{};
 const STEP_NAMES=['First email','Follow-up 1','Follow-up 2'];
 const STATUS={active:'In sequence',replied:'Replied',sample:'Wants samples',customer:'Customer',no:'Not interested',bounced:'Bounced'};
-const FOOT='\n\n--\nYezan\nSada\n'+(CFG.senderEmail||'sales@bureen.com')+'\n12 Olympic Street, Kenner, LA 70065\nNot a fit? Reply "no thanks" and I won\'t email again.';
+const FOOT='\n\n--\nYezan\nSada\n'+(CFG.senderEmail||'sales@bureen.com')+'\n272 Plauche St., New Orleans, LA 70123\nNot a fit? Reply "no thanks" and I won\'t email again.';
 const DEFAULT_TPL={gap1:3,gap2:4,emails:[
  {subject:'Tear-away tag blanks for {shop}?',
   body:'Hi {first_name},\n\nI\'m Yezan with Sada, a New Orleans-based T-shirt blank brand. We\'re getting ready to launch blanks made for print shops: each tee has a tear-away neck tag, so you can pull it off clean and finish the shirt under your customer\'s brand.\n\nThe first run will be 100% cotton in two weights, 4.7 oz and 5.3 oz, in black and white, with more colors coming later.\n\nBefore we lock in our first run, I\'m checking with a few shops in the area. Two quick questions:\n\n1. Do you relabel or private-label shirts for any of your customers?\n2. Which blanks do you use most right now?\n\nIf this sounds useful, I\'ll put {shop} on the list for first samples when our stock lands.\n\nThanks,'+FOOT},
